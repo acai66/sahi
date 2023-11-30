@@ -215,7 +215,7 @@ class Yolov8TritonDetectionModel(DetectionModel):
             print('conf[keep_ids]: ', conf[keep_ids])
 
             if box.size > 0:
-                prediction_result = np.concatenate([box[keep_ids][None], clsid[keep_ids][None][None], conf[keep_ids][None][None]], axis=-1)
+                prediction_result = np.concatenate([box[keep_ids][None], clsid[keep_ids][:, None][None], conf[keep_ids][:, None][None]], axis=-1)
             else:
                 prediction_result = np.array([[]])
 
